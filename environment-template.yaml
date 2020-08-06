@@ -35,29 +35,30 @@ cases:
     description: THICK-KABOB-CASE, such as identifiers in Cisco IOS. Words are forced to all uppercase, delimited by hypens. Opposite of sbob.
     example: QA = QUALITY-ASSURANCE; network object-group QUALITY-ASSURANCE-LOCAL-VPN
   title:
-    description: abc 
-    example: abc
+    description: Title Case, appropriate for titles. The first letter of each words is capitalized, with remaining letters in lowercase; words delimited by spaces
+    example: QA = Quality Assurance. Welcome to the Quality Assurance Status Check Page
   upper:
-    description: abc 
-    example: abc
+    description: FORCE ALL WORDS TO ALL UPPERCASE
+    example: Development = DEVELOPMENT; LIST OF DEVELOPMENT SERVICES
 
 ---
 aliases:
   class:
-    path: med-java
+    path: med/java
   code:
-    path: sm-lower
+    path: sm/lower
   description:
-     path: eng-lower
+     path: eng/lower
   title:
-    path: eng-title
+    path: eng/title
   hashicorp:
-    path: med-sbob
+    path: med/sbob
   
 ---
 example:
   sm: qa
     camel: qa
+    envar: QA
     java: Qa
     lower: qa
     sbob: qa
@@ -67,6 +68,7 @@ example:
     upper: QA
   med: qa
     camel: qa
+    envar: QA
     java: Qa
     lower: qa
     sbob: qa
@@ -76,6 +78,7 @@ example:
     upper: QA
   lg: quality-assurance
     camel: qualityAssurance
+    envar: QUALITY_ASSURANCE
     java: QualityAssurance
     lower: quality-assurance
     sbob: quality-assurance
@@ -85,6 +88,7 @@ example:
     upper: QUALITY-ASSURANCE
   eng: quality assurance
     camel: qualityAssurance
+    envar: QUALITY_ASSURANCE
     java: QualityAssurance
     lower: quality assurance
     sbob: quality-assurance
@@ -97,6 +101,7 @@ example:
 example:
   sm: pr
     camel: pr
+    envar: PR
     java: Pr
     lower: pr
     sbob: pr
@@ -106,6 +111,7 @@ example:
     upper: PR
   med: prod
     camel: prod
+    envar: PROD
     java: Prod
     lower: prod
     sbob: prod
@@ -114,8 +120,18 @@ example:
     title: Prod
     upper: PROD
   lg: production
+    camel: production
+    envar: PRODUCTION
+    java: Production
+    lower: production
+    sbob: production
+    snake: production
+    tbob: PRODUCTION
+    title: Production
+    upper: PRODUCTION
   eng: production
     camel: production
+    envar: PRODUCTION
     java: Production
     lower: production
     sbob: production
