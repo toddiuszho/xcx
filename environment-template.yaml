@@ -1,24 +1,54 @@
 ---
-levels:
+top-levels:
   sm:
-    required: true
-    levels:
+    description: Small. Shortest abbreviation possible, where number of characters are limited, such as the leftmost part of a hostname
+    example: Production = pr; pr-identity-mysql-015
   med:
-    required: true
-    levels:
-  lg:
-    required: true
-    levels:
+    description: Medium. Generous abbreviation, where you can afford to bring more clarity
+    example: Production = prod; prod-database-cluster
+  lg: 
+    description: Large. Full name of the environment. Multiple words are allowed, but the canonical form will be hyphen-delimited.
+    example: QA = quality-assurance; quality-assurance-social-algorithm-sorter
   eng:
-    required: true
-    lel
+    description: Full name of the environment in English prose
+    example: QA = Quality; Allow all Quality Assurance database clients to connect to this proxy
+cases:
+  camel:
+    description: camelCase, such as Java property names
+    example: QA = qualityAssurance; let qualityAssuranceUserCount = 5
+  envar:
+    description: ENVIRONMENT_VARIABLE. Words are forced to all uppercase, delimited by underscores. Opposite case of snakecase.
+    example: QA = QUALITY_ASSURANCE; export QUALITY_ASSURANCE_MONGO_PASSWORD=45678
+  java:
+    description: JavaIdentifier, such as a class name
+    example: QA = QualityAssurance; interface QualityAssuranceRepository { }
+  lower:
+    description: force words to all lowercase
+    example: Production = production; This is commonly found in production scenarios
+  sbob:
+    description: skinny-kabob. Words are forced to all lowercase, delimited by hypens. Opposite case of tbob.
+    example: QA = quality-assurance; quality-assurance-verifier
+  snake:
+    description: snake_case, such as with Ruby variable names and HCL names. Words are forced to all lowercase, delimited by underscores. Opposite case of envar.
+    example: abc
+  tbob:
+    description: THICK-KABOB-CASE, such as identifiers in Cisco IOS. Words are forced to all uppercase, delimited by hypens. Opposite of sbob.
+    example: QA = QUALITY-ASSURANCE; network object-group QUALITY-ASSURANCE-LOCAL-VPN
+  title:
+    description: abc 
+    example: abc
+  upper:
+    description: abc 
+    example: abc
 
 ---
 aliases:
+  class:
+    path: med-java
   code:
     path: sm-lower
   description:
-     path:eng-lower
+     path: eng-lower
   title:
     path: eng-title
   hashicorp:
@@ -27,12 +57,32 @@ aliases:
 ---
 example:
   sm: qa
+    camel: qa
+    java: Qa
     lower: qa
+    sbob: qa
+    snake: qa
+    tbob: QA
+    title: QA
     upper: QA
   med: qa
+    camel: qa
+    java: Qa
     lower: qa
+    sbob: qa
+    snake: qa
+    tbob: QA
+    title: QA
     upper: QA
-  lg: qa
+  lg: quality-assurance
+    camel: qualityAssurance
+    java: QualityAssurance
+    lower: quality-assurance
+    sbob: quality-assurance
+    snake: quality_assurance
+    tbob: QUALITY-ASSURANCE
+    title: Quality-Assurance
+    upper: QUALITY-ASSURANCE
   eng: quality assurance
     camel: qualityAssurance
     java: QualityAssurance
