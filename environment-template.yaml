@@ -1,0 +1,75 @@
+---
+levels:
+  sm:
+    required: true
+    levels:
+  med:
+    required: true
+    levels:
+  lg:
+    required: true
+    levels:
+  eng:
+    required: true
+    lel
+
+---
+aliases:
+  code:
+    path: sm-lower
+  description:
+     path:eng-lower
+  title:
+    path: eng-title
+  hashicorp:
+    path: med-sbob
+  
+---
+example:
+  sm: qa
+    lower: qa
+    upper: QA
+  med: qa
+    lower: qa
+    upper: QA
+  lg: qa
+  eng: quality assurance
+    camel: qualityAssurance
+    java: QualityAssurance
+    lower: quality assurance
+    sbob: quality-assurance
+    snake: quality_assurance
+    tbob: QUALITY-ASSURANCE
+    title: Quality Assurance
+    upper: QUALITY ASSURANCE
+  
+---
+example:
+  sm: pr
+    camel: pr
+    java: Pr
+    lower: pr
+    sbob: pr
+    snake: pr
+    tbob: PR
+    title: Pr
+    upper: PR
+  med: prod
+    camel: prod
+    java: Prod
+    lower: prod
+    sbob: prod
+    snake: prod
+    tbob: PROD
+    title: Prod
+    upper: PROD
+  lg: production
+  eng: production
+    camel: production
+    java: Production
+    lower: production
+    sbob: production
+    snake: production
+    tbob: PRODUCTION
+    title: Production
+    upper: PRODUCTION
