@@ -1,17 +1,17 @@
 ---
 top-levels:
-  sm:
-    description: Small. Shortest abbreviation possible, where number of characters are limited, such as the leftmost part of a hostname
+  code:
+    description: Small code. Shortest abbreviation possible, where number of characters are limited, such as the leftmost part of a hostname. No hyphens, all lowercase.
     example: Production = pr; pr-identity-mysql-015
-  med:
-    description: Medium. Generous abbreviation, where you can afford to bring more clarity
+  abbrev:
+    description: Medium abbreviation. Generous abbreviation, where you can afford to bring more clarity. No hyphens, all lowercase.
     example: Production = prod; prod-database-cluster
-  lg: 
-    description: Large. Full name of the environment. Multiple words are allowed, but the canonical form will be hyphen-delimited.
-    example: QA = quality-assurance; quality-assurance-social-algorithm-sorter
-  eng:
-    description: Full name of the environment in English prose
-    example: QA = Quality; Allow all Quality Assurance database clients to connect to this proxy
+  word: 
+    description: Large. Full name of the environment in a _single word_. No hyphens, all lowercase.
+    example: Dev = development; development-social-algorithm-sorter
+  phrase:
+    description: Full name of the environment in English prose. Multiple words allowed. No hyphens, all lowercase, spaces permitted.
+    example: QA = quality assurance; Allow all Quality Assurance database clients to connect to this proxy
 cases:
   camel:
     description: camelCase, such as Java property names
@@ -29,7 +29,7 @@ cases:
     description: skinny-kabob. Words are forced to all lowercase, delimited by hypens. Opposite case of tbob.
     example: QA = quality-assurance; quality-assurance-verifier
   snake:
-    description: snake_case, such as with Ruby variable names and HCL names. Words are forced to all lowercase, delimited by underscores. Opposite case of envar.
+    description: snake_case, such as with Ruby and C variable names, HCL names, Bash names. Words are forced to all lowercase, delimited by underscores. Opposite case of envar.
     example: abc
   tbob:
     description: THICK-KABOB-CASE, such as identifiers in Cisco IOS. Words are forced to all uppercase, delimited by hypens. Opposite of sbob.
