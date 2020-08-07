@@ -10,9 +10,9 @@
   * **train** - allow internal staff to train on an application version, even if not yet released live
   * **union** - union of cherry-pickedd features to test working together
 * **Stage Specifiers** detail how requests for application versions or "featuresets" get deployed to a stage
-  * **union** - ${checksum}-${ticket}
-  * **versioned** - ${version}-${ticket}
-* **Stage** is a destination in an environment for a deployment. ${env_code}-${stage_type}-${stage_specifier}
-* **Domain** is a combination of stage and application name. ${env_code}-${stage_type}-${stage_specifier}.${app_abbrev}.${apex_domain}
+  * **union** - ${checksum}-${ticket} :: 5c98a-678ffa
+  * **versioned** - ${version}-${ticket} :: 0005-79a0a
+* **Stage** is a destination in an environment for a deployment. ${env_code}-${stage_type}-${stage_specifier} :: qa-demo-0005-79a0a
+* **Domain** is a combination of stage and application name. ${env_code}-${stage_type}-${stage_specifier}.${app_abbrev}.${apex_domain} :: qa-demo-0005-79a0a.iam.toddiuszho.net
 * **Region** - geographical region where resources are hosted. Spreading across Regions adds much latency & expense, but grants a great deal of disaster recovery. Some hosted services do not easily add interoperability of resources among different Regions.
 * **Zone** - logical subdivision of a Region. Spreading across Zones adds a little latency & expense, but grants a small deal of disaster recovery. Most hosted services support (and even encourage) interoperability of resources among different Zones in the same Region.
