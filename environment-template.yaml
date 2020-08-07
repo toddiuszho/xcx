@@ -1,49 +1,53 @@
 ---
-top-levels:
+forms:
   code:
     description: Small code. Shortest abbreviation possible, where number of characters are limited, such as the leftmost part of a hostname. All lowercase, hyphens forbidden.
-    example: Production = pr; pr-identity-mysql-015
+    example: pr-identity-mysql-cluster-002-node-0005
   abbrev:
     description: Medium abbreviation. Generous abbreviation, where you can afford to bring more clarity. All lowercase, hyphens forbidden.
-    example: Production = prod; prod-database-cluster
+    example: prod-elasticsearch-cluster
   word: 
-    description: Large. Full name of the environment in a _single word_. All lowercase, hypes permitted.
-    example: Dev = development; development-social-algorithm-sorter
+    description: Large. Full name of the environment in a _single word_. All lowercase, hyphens permitted.
+    example: I deployed it to pre-prod.
   phrase:
     description: Full name of the environment in English prose. Multiple words allowed. All lowercase, spaces and hyphens permitted.
-    example: QA = quality assurance; Allow all Quality Assurance database clients to connect to this proxy
+    example: Allow all Quality Assurance database clients to connect to query proxies
 cases:
   camel:
-    description: camelCase, such as Java property names
-    example: quality assurance = qualityAssurance; let qualityAssuranceUserCount = 5
-  canonical: the canonical version of the level name, from which most case values can be programmatically derived
+    description: camelCase, such as Java variable names
+    example: let qualityAssuranceUserCount = 5
+  canonical: the canonical version of the level name, from which most other case values can be programmatically derived
+    example: env.abbrev.canonical = preprod
+  dotted:
+    description: dotted.case, such as properties in a Java .properties file or a FQDN
+    example: qa.targets.count
   envar:
     description: ENVIRONMENT_VARIABLE. Words are forced to all uppercase, delimited by underscores. Opposite case of snakecase.
-    example: quality assurance = QUALITY_ASSURANCE; export QUALITY_ASSURANCE_MONGO_PASSWORD=45678
+    example: export QUALITY_ASSURANCE_MONGO_PASSWORD=45678
   java:
     description: JavaIdentifier, such as a class name
-    example: quality assurance = QualityAssurance; interface QualityAssuranceRepository { }
+    example: interface QualityAssuranceRepository { }
   lower:
     description: force words to all lowercase
-    example: QA = qa; This is commonly found in qa scenarios
+    example: This is commonly found in qa scenarios.
   natural:
     description: how it would appear in the middle of a sentence
-    example: QA = QA. These are the QA personnel
+    example: These are the QA personnel
   sbob:
     description: skinny-kabob. Words are forced to all lowercase, delimited by hypens. Opposite case of tbob.
-    example: quality assurance = quality-assurance; quality-assurance-verifier
+    example: quality-assurance-verifier
   snake:
     description: snake_case, such as with Ruby and C variable names, HCL names, Bash names. Words are forced to all lowercase, delimited by underscores. Opposite case of envar.
-    example: pre-prod = pre_prod; pre_prod_balancer_count = 5
+    example: pre_prod_balancer_count = 5
   tbob:
     description: THICK-KABOB-CASE, such as identifiers in Cisco IOS. Words are forced to all uppercase, delimited by hypens. Opposite of sbob.
-    example: quality assurance = QUALITY-ASSURANCE; network object-group QUALITY-ASSURANCE-LOCAL-VPN
+    example: network object-group QUALITY-ASSURANCE-LOCAL-VPN
   title:
     description: Title Case, appropriate for titles. The first letter of each words is capitalized, with remaining letters in lowercase; words delimited by spaces
-    example: quality assurance = Quality Assurance. Welcome to the Quality Assurance Status Check Page
+    example: Welcome to the Quality Assurance Status Check Page
   upper:
     description: FORCE ALL WORDS TO ALL UPPERCASE
-    example: Development = DEVELOPMENT; LIST OF DEVELOPMENT SERVICES
+    example: LIST OF DEVELOPMENT SERVICES
 
 ---
 aliases:
@@ -53,12 +57,17 @@ aliases:
      path: phrase/natural
   title:
     path: phrase/title
-  class:
+  type:
     path: phrase/java
   bash:
     path: abbrev/snake
+  hcl:
+    path: abbrev/snake
   envar:
     path: abbrev/envar
+usage-examples:
+  - | export #{env.alias.bash}_cidrs=(#{env.cidrs.quotedAndEscapedJoin(' ', '\'')})
+  - | interface #{env.alias.type}Executor { }
 
 ---
 example:
