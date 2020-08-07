@@ -1,141 +1,110 @@
 ---
 top-levels:
   code:
-    description: Small code. Shortest abbreviation possible, where number of characters are limited, such as the leftmost part of a hostname. No hyphens, all lowercase.
+    description: Small code. Shortest abbreviation possible, where number of characters are limited, such as the leftmost part of a hostname. All lowercase, hyphens forbidden.
     example: Production = pr; pr-identity-mysql-015
   abbrev:
-    description: Medium abbreviation. Generous abbreviation, where you can afford to bring more clarity. No hyphens, all lowercase.
+    description: Medium abbreviation. Generous abbreviation, where you can afford to bring more clarity. All lowercase, hyphens forbidden.
     example: Production = prod; prod-database-cluster
   word: 
-    description: Large. Full name of the environment in a _single word_. No hyphens, all lowercase.
+    description: Large. Full name of the environment in a _single word_. All lowercase, hypes permitted.
     example: Dev = development; development-social-algorithm-sorter
   phrase:
-    description: Full name of the environment in English prose. Multiple words allowed. No hyphens, all lowercase, spaces permitted.
+    description: Full name of the environment in English prose. Multiple words allowed. All lowercase, spaces and hyphens permitted.
     example: QA = quality assurance; Allow all Quality Assurance database clients to connect to this proxy
 cases:
   camel:
     description: camelCase, such as Java property names
-    example: QA = qualityAssurance; let qualityAssuranceUserCount = 5
+    example: quality assurance = qualityAssurance; let qualityAssuranceUserCount = 5
+  canonical: the canonical version of the level name, from which most case values can be programmatically derived
   envar:
     description: ENVIRONMENT_VARIABLE. Words are forced to all uppercase, delimited by underscores. Opposite case of snakecase.
-    example: QA = QUALITY_ASSURANCE; export QUALITY_ASSURANCE_MONGO_PASSWORD=45678
+    example: quality assurance = QUALITY_ASSURANCE; export QUALITY_ASSURANCE_MONGO_PASSWORD=45678
   java:
     description: JavaIdentifier, such as a class name
-    example: QA = QualityAssurance; interface QualityAssuranceRepository { }
+    example: quality assurance = QualityAssurance; interface QualityAssuranceRepository { }
   lower:
     description: force words to all lowercase
-    example: Production = production; This is commonly found in production scenarios
+    example: QA = qa; This is commonly found in qa scenarios
+  natural:
+    description: how it would appear in the middle of a sentence
+    example: QA = QA. These are the QA personnel
   sbob:
     description: skinny-kabob. Words are forced to all lowercase, delimited by hypens. Opposite case of tbob.
-    example: QA = quality-assurance; quality-assurance-verifier
+    example: quality assurance = quality-assurance; quality-assurance-verifier
   snake:
     description: snake_case, such as with Ruby and C variable names, HCL names, Bash names. Words are forced to all lowercase, delimited by underscores. Opposite case of envar.
-    example: abc
+    example: pre-prod = pre_prod; pre_prod_balancer_count = 5
   tbob:
     description: THICK-KABOB-CASE, such as identifiers in Cisco IOS. Words are forced to all uppercase, delimited by hypens. Opposite of sbob.
-    example: QA = QUALITY-ASSURANCE; network object-group QUALITY-ASSURANCE-LOCAL-VPN
+    example: quality assurance = QUALITY-ASSURANCE; network object-group QUALITY-ASSURANCE-LOCAL-VPN
   title:
     description: Title Case, appropriate for titles. The first letter of each words is capitalized, with remaining letters in lowercase; words delimited by spaces
-    example: QA = Quality Assurance. Welcome to the Quality Assurance Status Check Page
+    example: quality assurance = Quality Assurance. Welcome to the Quality Assurance Status Check Page
   upper:
     description: FORCE ALL WORDS TO ALL UPPERCASE
     example: Development = DEVELOPMENT; LIST OF DEVELOPMENT SERVICES
 
 ---
 aliases:
-  class:
-    path: med/java
-  code:
-    path: sm/lower
+  name-tag:
+    path: abbrev/java
   description:
-     path: eng/lower
+     path: phrase/natural
   title:
-    path: eng/title
-  hashicorp:
-    path: med/sbob
-  
+    path: phrase/title
+  class:
+    path: phrase/java
+  bash:
+    path: abbrev/snake
+  envar:
+    path: abbrev/envar
+
 ---
 example:
-  sm: qa
-    camel: qa
-    envar: QA
-    java: Qa
-    lower: qa
-    sbob: qa
-    snake: qa
-    tbob: QA
-    title: QA
-    upper: QA
-  med: qa
-    camel: qa
-    envar: QA
-    java: Qa
-    lower: qa
-    sbob: qa
-    snake: qa
-    tbob: QA
-    title: QA
-    upper: QA
-  lg: quality-assurance
-    camel: qualityAssurance
-    envar: QUALITY_ASSURANCE
-    java: QualityAssurance
-    lower: quality-assurance
-    sbob: quality-assurance
-    snake: quality_assurance
-    tbob: QUALITY-ASSURANCE
-    title: Quality-Assurance
-    upper: QUALITY-ASSURANCE
-  eng: quality assurance
-    camel: qualityAssurance
-    envar: QUALITY_ASSURANCE
-    java: QualityAssurance
-    lower: quality assurance
-    sbob: quality-assurance
-    snake: quality_assurance
-    tbob: QUALITY-ASSURANCE
-    title: Quality Assurance
-    upper: QUALITY ASSURANCE
-  
+  code: &qa-word
+    canonical: qa
+    natural: QA
+  abbrev: 
+    <<: *qa-word
+  word:
+    <<: *qa-word
+  phrase:
+    canonical: quality assurance
+
 ---
 example:
-  sm: pr
-    camel: pr
-    envar: PR
-    java: Pr
-    lower: pr
-    sbob: pr
-    snake: pr
-    tbob: PR
-    title: Pr
-    upper: PR
-  med: prod
-    camel: prod
-    envar: PROD
-    java: Prod
-    lower: prod
-    sbob: prod
-    snake: prod
-    tbob: PROD
-    title: Prod
-    upper: PROD
-  lg: production
-    camel: production
-    envar: PRODUCTION
-    java: Production
-    lower: production
-    sbob: production
-    snake: production
-    tbob: PRODUCTION
-    title: Production
-    upper: PRODUCTION
-  eng: production
-    camel: production
-    envar: PRODUCTION
-    java: Production
-    lower: production
-    sbob: production
-    snake: production
-    tbob: PRODUCTION
-    title: Production
-    upper: PRODUCTION
+  code:
+    canonical: pr
+    natural: PR
+  abbrev:
+    canonical: prod
+  word:
+    canonical: production
+  phrase:
+    canonical: production
+    
+---
+example:
+  code:
+    canonical: prpr
+    natural: PRPR
+  abbrev:
+    canonical: preprod
+    natural: pre-prod
+  word:
+    canonical: pre-production
+  phrase:
+    canonical: pre-production
+
+---
+example:
+  code:
+    canonical: dv
+    natural: DV
+  abbrev:
+    canonical: dev
+  word:
+    canonical: development
+  phrase:
+    canonical: development
