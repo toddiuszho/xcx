@@ -1,6 +1,6 @@
 * **Provider** - company providing cloud hosting. Azure, AWS, GCP, Rackspace, HP, Oracle, Openshift, etc.
 * **Account** - sellable entrypoint into a Provider. An AWS Account
-* **Organization** - logical grouping of several Accounts together, usually for consolidated billing and governance. AWS Organizations
+* **Organization** - logical grouping of several Accounts by the Provider together, usually for consolidated billing and governance. AWS Organizations
 * **Environment** is a hard-break dividing separation of concerns, to appease Security. Development + Early Testing vs. Late Testing (discipline your team to treat as much like Production as possible) vs. Production
 * **Stage Types** describe an application-agnostic purpose for deployment
   * **demo** - sales demo of a particular version
