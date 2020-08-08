@@ -22,6 +22,9 @@
   * **Degenerate Aliases:**
     * No **env_code** needed for Production :: `premium-shopping.toddiuszho.net`
     * No **portal** needed for an application that's shared across all audiences :: `dev.iam.toddiuszho.net`
+* **FQDN Notes**
+  * Label max is 63 chars
+  * FQDN max is 253 chars
 * **Region** - geographical region where resources are hosted. Spreading across Regions adds much latency & expense, but grants a great deal of disaster recovery. Some hosted services do not easily add interoperability of resources among different Regions.
 * **Zone** - logical subdivision of a Region. Spreading across Zones adds a little latency & expense, but grants a small deal of disaster recovery. Most hosted services support (and even encourage) interoperability of resources among different Zones in the same Region.
 * **Application Breakdown**
