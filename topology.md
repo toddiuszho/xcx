@@ -15,16 +15,21 @@
   * **union** - u#{checksum}-v#{version}-t#{ticket} :: `u5c98a-v0005-t678ffa`
   * **versioned** - v#{version}-t#{ticket} :: `v0005-t79a0a`
   * **whitelabeled** - w#{label}-v#{version}-t#{ticket} :: `w34a6e-v005-t810a2`
-* **Stage** - destination in an environment for a deployment. #{env_code}-#{portal}-#{specifier} :: `qa-demo-v0005-t79a0a`
+* **Stage** - destination in an environment for a deployment. #{env_abbrev}-#{portal}-#{specifier} :: `qa-demo-v0005-t79a0a`
 * **Apex** - registered domain name, one label nested under an ICANN TLD :: `toddiuszho.net`
-* **Domain** - FQDN. combination of stage and application name as subdomain nested under an Apex. #{env_code}-#{portal}-#{specifier}.#{app_abbrev}.#{apex} :: `qa-demo-v0005-t79a0a.shopping.toddiuszho.net`
-* **Alias** - Floating, stable FQDN. Every deployment to a stage gets its own unique FQDN. It's common after smoke testing it, to repoint an Alias FQDN to this unique FQDN (using DNS records like CNAME and ALIAS), to direct traffic from an older stage to this new one. #{env_code}-#{portal}.#{app_abbrev}.#{apex} :: `qa-member.shopping.toddiuszho.net`
+* **Domain** - FQDN. combination of stage and application name as subdomain nested under an Apex. #{env_abbrev}-#{portal}-#{specifier}.#{app_abbrev}.#{apex} :: `qa-demo-v0005-t79a0a.shopping.toddiuszho.net`
+* **Alias** - Floating, stable FQDN. Every deployment to a stage gets its own unique FQDN. It's common after smoke testing it, to repoint an Alias FQDN to this unique FQDN (using DNS records like CNAME and ALIAS), to direct traffic from an older stage to this new one. #{env_abbrev}-#{portal}.#{app_abbrev}.#{apex} :: `qa-member.shopping.toddiuszho.net`
   * **Degenerate Aliases:**
     * No **env_code** needed for Production :: `premium-shopping.toddiuszho.net`
     * No **portal** needed for an application that's shared across all audiences :: `dev.iam.toddiuszho.net`
 * **FQDN Notes**
   * Label max is 63 chars
   * FQDN max is 253 chars
+  * env_abbrev max is 20 chars
+  * portal max is 20 chars
+  * specifier max is 20 chars
+  * Subtotal: env_abbrev + delim + portal + delim + specifier = 62, just shy of label max!
+  * app_abbrev max is 20 chars
 * **Region** - geographical region where resources are hosted. Spreading across Regions adds much latency & expense, but grants a great deal of disaster recovery. Some hosted services do not easily add interoperability of resources among different Regions.
 * **Zone** - logical subdivision of a Region. Spreading across Zones adds a little latency & expense, but grants a small deal of disaster recovery. Most hosted services support (and even encourage) interoperability of resources among different Zones in the same Region.
 * **Application Breakdown**
