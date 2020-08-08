@@ -16,7 +16,7 @@
   * **versioned** - v#{version}-t#{ticket} :: `v0005-t79a0a`
   * **whitelabeled** - w#{label}-v#{version}-t#{ticket} :: `w34a6e-v005-t810a2`
 * **Stage** - destination in an environment for a deployment. #{env_code}-#{portal}-#{specifier} :: `qa-demo-v0005-t79a0a`
-* **Apex** - registered domain one part nested under an ICANN TLD :: toddiuszho.net
+* **Apex** - registered domain name, one label nested under an ICANN TLD :: `toddiuszho.net`
 * **Domain** - FQDN. combination of stage and application name as subdomain nested under an Apex. #{env_code}-#{portal}-#{specifier}.#{app_abbrev}.#{apex} :: `qa-demo-v0005-t79a0a.shopping.toddiuszho.net`
 * **Alias** - Floating, stable FQDN. Every deployment to a stage gets its own unique FQDN. It's common after smoke testing it, to repoint an Alias FQDN to this unique FQDN (using DNS records like CNAME and ALIAS), to direct traffic from an older stage to this new one. #{env_code}-#{portal}.#{app_abbrev}.#{apex} :: `qa-member.shopping.toddiuszho.net`
   * **Degenerate Aliases:**
